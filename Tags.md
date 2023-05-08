@@ -100,3 +100,61 @@ th:each - Renderiza um bloco de elementos HTML para cada item de uma lista:
 <div th:style="'color: ' + ${cor}"></div>
 ```
 Essas são apenas algumas das tags mais comuns do Thymeleaf. A documentação oficial do Thymeleaf contém uma lista completa de todas as tags e suas funcionalidades.
+
+#
+#
+
+O `th:attr` é uma diretiva do Thymeleaf que permite adicionar ou modificar atributos HTML de uma tag. Isso pode ser útil em situações em que você precisa modificar o valor de um atributo ou adicionar um novo atributo a uma tag.
+
+O `th:attr` pode ser usado de duas maneiras:
+
+Adicionar um novo atributo a uma tag:
+
+```bash
+<div th:attr="data-custom-attr=${value}">
+  ...
+</div>
+```
+
+Neste exemplo, a diretiva th:attr adiciona um novo `atributo data-custom-attr` à tag `<div>`. O valor do atributo é definido pela variável `value`.
+
+Modificar o valor de um atributo existente:
+
+```html
+<img src="img/myimage.jpg" th:attr="src=@{/newpath/myimage.jpg}">
+```
+
+Neste exemplo, a diretiva th:attr modifica o valor do atributo src da tag `<img>`. O novo valor é definido pela expressão `@{/newpath/myimage.jpg}`, que é uma expressão Thymeleaf que gera um URL relativo a partir da raiz do contexto da aplicação.
+
+Em ambos os casos, a diretiva th:attr é usada para modificar ou adicionar atributos HTML a uma tag. É uma maneira útil de gerar dinamicamente o conteúdo HTML com base em dados do back-end ou em outras informações da aplicação.
+
+#
+#
+
+O atributo `th:object` é usado no Thymeleaf para definir o objeto que será usado como contexto no template. Ele permite que as expressões sejam avaliadas em relação a esse objeto, ou seja, permite que você acesse as propriedades e métodos desse objeto diretamente em seu template.
+
+Para usar o `th:object`, basta definir o nome do objeto na tag HTML onde ele será usado, como no exemplo abaixo:
+
+```html
+
+<form th:object="${usuario}" method="post" action="@{/usuario/save}">
+  <input type="text" th:field="*{nome}" />
+  <input type="email" th:field="*{email}" />
+  <button type="submit">Salvar</button>
+</form>
+```
+
+th:object: Define o objeto de contexto para o modelo Thymeleaf. Por exemplo, th:object="${user}" irá definir o objeto user como o objeto de contexto para a página.
+```html
+
+<form th:object="${user}">
+  <input type="text" th:field="*{firstName}">
+  <input type="text" th:field="*{lastName}">
+</form>
+```
+
+Nesse exemplo, o objeto `usuario` é definido como contexto para o formulário. Isso significa que, ao usar a expressão `*{nome}`no campo de entrada do nome, o Thymeleaf irá buscar a propriedade nome no objeto usuario. O mesmo acontece para o campo de entrada do e-mail.
+
+Note que o `th:field` também é usado nesse exemplo para definir o nome do campo que será preenchido com o valor do objeto. O `th:field` é usado em conjunto com o `th:object` para permitir a ligação de dados bidirecional entre o objeto e o formulário HTML.
+
+Em resumo, o th:object é usado para definir o objeto que será usado como contexto no template e permite que você acesse as propriedades desse objeto diretamente em seu template. O th:field é usado para ligação de dados bidirecional entre o objeto e o formulário HTML.

@@ -25,9 +25,28 @@
       Esse link leva para outra página.
     </a>
 
-    <img th:src="@{/caminho/para/imagem.jpg}" />
+    <!--    <img th:src="@{/caminho/para/imagem.jpg}" />-->
+    <!--    <img th:src="@{${path}/${imageName}}"/>-->
+    <!--    <img th:src="@{|${#servletContext.contextPath}/assets/ubuntu-kudu-wallpaper.jpg|}" alt="Imagem">-->
+    <img th:src="@{src/main/resources/assets/Captura.png}" alt="Imagem">
 
     <div th:attr="data-valor=${valor}">Esse atributo foi definido dinamicamente.</div>
+    <!--    <img src="../assets/ubuntu-kudu-wallpaper.jpg" th:attr="src=@{/newpath/myimage.jpg}">-->
+
+    <div th:switch="${diaSemana}">
+      <p th:case="'segunda-feira'">Hoje é segunda-feira.</p>
+      <p th:case="'terça-feira'">Hoje é terça-feira.</p>
+      <p th:case="'quarta-feira'">Hoje é quarta-feira.</p>
+      <p th:case="'quinta-feira'">Hoje é quinta-feira.</p>
+      <p th:case="'sexta-feira'">Hoje é sexta-feira.</p>
+      <!--      <p th:case="'sábado', 'domingo'">Hoje é fim de semana.</p>-->
+      <p th:case="'sabado'">Hoje é fim de semana.</p>
+      <p th:case="'domingo'">Hoje é fim de semana.</p>
+      <p th:case="*">Não é um dia válido</p>
+    </div>
+
+    <!--    <a th:href="@{/produto/{id}(id=${produto.id})}" th:text="${produto.nome}"></a>-->
+    <!--    <img th:src="@{/img/produto.jpg}" alt="Imagem do Produto">-->
 
   </body>
 </html>
