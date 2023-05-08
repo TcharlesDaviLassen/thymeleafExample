@@ -32,13 +32,13 @@ Nesse exemplo, estamos utilizando as tags `th:text`, `th:each` e `th:if`. A tag 
 @Controller
 public class MeuController {
 
-@GetMapping("/")
-public String home(Model model) {
-model.addAttribute("title", "Minha página");
-model.addAttribute("header", "Bem-vindo à minha página");
-model.addAttribute("itens", Arrays.asList("item 1", "item 2", "item 3"));
-return "home";
-}
+  @GetMapping("/")
+  public String home(Model model) {
+      model.addAttribute("title", "Minha página");
+      model.addAttribute("header", "Bem-vindo à minha página");
+      model.addAttribute("itens", Arrays.asList("item 1", "item 2", "item 3"));
+    return "home";
+    }
 }
 ```
 Nesse exemplo, estamos utilizando a anotação `@Controller` para definir uma classe que será um controlador no Spring. A anotação `@GetMapping("/")` indica que essa classe será responsável por lidar com as requisições para a raiz do site. No método home, estamos adicionando três atributos ao objeto `Model: title`, `header` e `itens`. Por fim, estamos retornando o nome do arquivo HTML que será utilizado como template.
@@ -74,6 +74,4 @@ Alguns recursos e funcionalidades do Thymeleaf incluem:
 - Integração com Spring: o Thymeleaf é o mecanismo de template padrão do Spring, permitindo uma integração fácil com outros recursos do framework.
 
 Em resumo, o Thymeleaf é uma ferramenta poderosa para criar templates HTML para aplicativos da web, oferecendo uma sintaxe intuitiva, recursos avançados e integração com o Spring Boot.
-# thymeleafExample
-# thymeleafExample
 # thymeleafExample
