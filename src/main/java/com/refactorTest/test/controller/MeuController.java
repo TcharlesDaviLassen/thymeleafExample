@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.Arrays;
+import java.util.List;
 
 @Controller
 public class MeuController {
@@ -14,6 +15,16 @@ public class MeuController {
         model.addAttribute("title", "Minha página");
         model.addAttribute("header", "Bem-vindo à minha página");
         model.addAttribute("itens", Arrays.asList("item 1", "item 2", "item 3"));
+
+        boolean condicao = true;
+        model.addAttribute("condicao", condicao);
+
+        List<String> listaDeItens = Arrays.asList("Item 1", "Item 2", "Item 3");
+        model.addAttribute("listaDeItens", listaDeItens);
+
+        int valor = 123;
+        model.addAttribute("valor", valor);
+
         return "home";
     }
 }

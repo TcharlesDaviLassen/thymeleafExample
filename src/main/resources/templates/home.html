@@ -8,5 +8,26 @@
     <ul>
       <li th:each="item : ${itens}" th:text="${item}"></li>
     </ul>
+
+    <div th:if="${condicao}">
+      Esse conteúdo só será exibido se a condição for verdadeira.
+    </div>
+
+    <div th:unless="${condicao}">
+      Esse conteúdo só será exibido se a condição for falsa.
+    </div>
+
+    <ul>
+      <li th:each="item : ${listaDeItens}" th:text="${item}">Item padrão</li>
+    </ul>
+
+    <a th:href="@{/caminho/para/pagina}">
+      Esse link leva para outra página.
+    </a>
+
+    <img th:src="@{/caminho/para/imagem.jpg}" />
+
+    <div th:attr="data-valor=${valor}">Esse atributo foi definido dinamicamente.</div>
+
   </body>
 </html>
