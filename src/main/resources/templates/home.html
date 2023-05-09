@@ -58,17 +58,26 @@
       <label for="email">Email:</label>
       <input type="email" id="email" name="email" th:field="*{email}" />
       <br />
+      <br />
 
       <button type="submit">Submit</button>
     </form>
 
+    <!--  -->
     <a th:href="@{/produto/{id}(id=${produto.id})}" th:text="${produto.nome}"></a>
     <img th:src="@{/img/produto.jpg}" alt="Imagem do Produto">
-
 
     <ul>
       <li th:each="produto : ${produtos}" th:text="${produto.nome}"></li>
     </ul>
+
+    <ul>
+      <li th:each="produto : ${produtos}">
+        <span th:text="${produto.id}"></span> -
+        <span th:text="${produto.nome}"></span>
+      </li>
+    </ul>
+    <!--  -->
 
   </body>
 </html>
