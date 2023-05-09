@@ -1,5 +1,6 @@
 package com.refactorTest.test.controller;
 
+import com.refactorTest.test.model.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,6 +31,8 @@ public class MeuController {
         int valor = 123;
         model.addAttribute("valor", valor);
 
+        User user = new User();
+        model.addAttribute("user", user);
 
         //        model.addAttribute("produto", new Produto(1, "Produto Teste"));
 
