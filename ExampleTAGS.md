@@ -1,4 +1,4 @@
-As principais tags do Thymeleaf são:
+### As principais tags do Thymeleaf são:
 
 1. `th:text`: define o texto que deve ser exibido dentro de um elemento HTML;
 
@@ -81,3 +81,86 @@ public class ExemploController {
 ```
 
 Nesse exemplo, a página `"exemplo.html"` será renderizada com os valores passados pelo controlador Java.
+
+#
+#
+
+As tags do Thymeleaf permitem a interação entre o HTML e o Java por meio de atributos e elementos específicos. Segue abaixo a lista das principais tags do Thymeleaf com exemplos em HTML e Java:
+
+1. `th:text`: exibe o conteúdo de uma variável Java em um elemento HTML:
+
+```html
+    <h1 th:text="${titulo}">Título da Página</h1>
+```
+Java:
+```java
+    model.addAttribute("titulo", "Minha Página")
+```
+
+2. `th:if`: permite a exibição condicional de elementos HTML de acordo com uma expressão Java:
+
+HTML:
+```html
+    <p th:if="${condicao}">Este parágrafo será exibido se a condição for verdadeira.</p>
+```
+Java:
+```java
+    model.addAttribute("condicao", true);
+```
+3. `th:unless`: funciona de forma inversa ao th:if, exibindo o elemento HTML apenas se a expressão Java for falsa:
+
+HTML:
+```html
+    <p th:unless="${condicao}">Este parágrafo será exibido se a condição for falsa.</p>
+```
+Java:
+```java
+    model.addAttribute("condicao", false);
+```
+4. `th:switch`, `th:case` e `th:break: permite a criação de estruturas condicionais mais complexas:
+
+HTML:
+```html
+<div th:switch="${diaSemana}">
+    <p th:case="'segunda-feira'">Hoje é segunda-feira.</p>
+    <p th:case="'terça-feira'">Hoje é terça-feira.</p>
+    <p th:case="'quarta-feira'">Hoje é quarta-feira.</p>
+    <p th:case="'quinta-feira'">Hoje é quinta-feira.</p>
+    <p th:case="'sexta-feira'">Hoje é sexta-feira.</p>
+    <p th:case="'sabado'">Hoje é fim de semana.</p>
+    <p th:case="'domingo'">Hoje é fim de semana.</p>
+    <p th:case="*">Dia desconhecido.</p>
+</div>
+```
+
+Java:
+```java
+    model.addAttribute("diaSemana", "quarta-feira");
+```
+5. `th:each`: permite a iteração sobre uma lista de objetos Java e a criação de elementos HTML dinamicamente:
+
+HTML:
+```html
+<ul>
+    <li th:each="produto : ${produtos}" th:text="${produto.nome}"></li>
+</ul>
+```
+Java:
+```Java
+    List<Produto> produtos = new ArrayList<>();
+    produtos.add(new Produto("Produto 1"));
+    produtos.add(new Produto("Produto 2"));
+    model.addAttribute("produtos", produtos);
+```
+
+6. `th:href` e `th:src`: permite a atribuição dinâmica de valores a atributos HTML, como o "href" de um link ou o "src" de uma imagem:
+
+HTML
+```html
+<a th:href="@{/produto/{id}(id=${produto.id})}" th:text="${produto.nome}"></a>
+<img th:src="@{/img/produto.jpg}" alt="Imagem do Produto">
+```
+Java:
+```java
+    model.addAttribute("produto", new Produto(1, "Produto Teste"));
+```

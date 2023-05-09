@@ -1,10 +1,12 @@
 package com.refactorTest.test.controller;
 
+import com.refactorTest.test.model.Produto;
 import com.refactorTest.test.model.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -31,10 +33,18 @@ public class MeuController {
         int valor = 123;
         model.addAttribute("valor", valor);
 
+        //
         User user = new User();
         model.addAttribute("user", user);
 
-        //        model.addAttribute("produto", new Produto(1, "Produto Teste"));
+        //
+        model.addAttribute("produto", new Produto(1L, "Produto Teste"));
+
+        //
+        List<Produto> produtos = new ArrayList<>();
+        produtos.add(new Produto(2L,"Produto 1"));
+        produtos.add(new Produto(3L,"Produto 2"));
+        model.addAttribute("produtos", produtos);
 
         //        String path = "/home/flexabus/Projects_Test/test/src/main/resources/assets/ubuntu-kudu-wallpaper.jpg";
         //        String imageName = "example.jpg";
