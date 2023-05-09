@@ -2,6 +2,8 @@ package com.refactorTest.test.controller;
 
 import com.refactorTest.test.model.Produto;
 import com.refactorTest.test.model.User;
+import jakarta.servlet.ServletContext;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +14,9 @@ import java.util.List;
 
 @Controller
 public class MeuController {
+
+    @Autowired
+    private ServletContext servletContext;
 
     @GetMapping("/")
     public String home(Model model) {
@@ -46,11 +51,15 @@ public class MeuController {
         produtos.add(new Produto(3L,"Produto 2"));
         model.addAttribute("produtos", produtos);
 
-        //        String path = "/home/flexabus/Projects_Test/test/src/main/resources/assets/ubuntu-kudu-wallpaper.jpg";
-        //        String imageName = "example.jpg";
+        //        String path = "src/main/resources/assets/";
+        //        String imageName = "Captura.png";
         //        model.addAttribute("path", path);
         //        model.addAttribute("imageName", imageName);
 
+        String assetsPath = servletContext.getRealPath("/static");
+        model.addAttribute("assetsPath", assetsPath);
+
         return "home";
     }
+
 }

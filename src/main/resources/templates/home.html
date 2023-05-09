@@ -1,83 +1,113 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <title th:text="${title}">Título da página</title>
-  </head>
-  <body>
-    <h1 th:text="${header}">Cabeçalho da página</h1>
-    <ul>
-      <li th:each="item : ${itens}" th:text="${item}"></li>
-    </ul>
+    <body>
+        <h1 th:text="${header}">Cabeçalho da página</h1>
 
-    <div th:if="${condicao}">
-      Esse conteúdo só será exibido se a condição for verdadeira.
-    </div>
+        <h1>EACH</h1>
+        <ul>
+            <li th:each="item : ${listaDeItens}" th:text="${item}">Item padrão</li>
+        </ul>
 
-    <div th:unless="${condicao}">
-      Esse conteúdo só será exibido se a condição for falsa.
-    </div>
+        <ul>
+            <li th:each="item : ${itens}" th:text="${item}"></li>
+        </ul>
 
-    <ul>
-      <li th:each="item : ${listaDeItens}" th:text="${item}">Item padrão</li>
-    </ul>
+        <ul>
+            <li th:each="produto : ${produtos}" th:text="${produto.nome}"></li>
+        </ul>
 
-    <a th:href="@{/caminho/para/pagina}">
-      Esse link leva para outra página.
-    </a>
+        <ul>
+            <li th:each="produto : ${produtos}">
+                <span th:text="${produto.id}"></span> -
+                <span th:text="${produto.nome}"></span>
+            </li>
+        </ul>
 
-    <!--    <img th:src="@{/caminho/para/imagem.jpg}" />-->
-    <!--    <img th:src="@{${path}/${imageName}}"/>-->
-    <!--    <img th:src="@{|${#servletContext.contextPath}/assets/ubuntu-kudu-wallpaper.jpg|}" alt="Imagem">-->
-    <img th:src="@{src/main/resources/assets/Captura.png}" alt="Imagem">
+        <!--    -->
 
-    <div th:attr="data-valor=${valor}">Esse atributo foi definido dinamicamente.</div>
-    <!--    <img src="../assets/ubuntu-kudu-wallpaper.jpg" th:attr="src=@{/newpath/myimage.jpg}">-->
+        <h1>IF, UNLESS</h1>
+        <div th:if="${condicao}">
+            Esse conteúdo só será exibido se a condição for verdadeira.
+        </div>
 
-    <div th:switch="${diaSemana}">
-      <p th:case="'segunda-feira'">Hoje é segunda-feira.</p>
-      <p th:case="'terça-feira'">Hoje é terça-feira.</p>
-      <p th:case="'quarta-feira'">Hoje é quarta-feira.</p>
-      <p th:case="'quinta-feira'">Hoje é quinta-feira.</p>
-      <p th:case="'sexta-feira'">Hoje é sexta-feira.</p>
-      <!--      <p th:case="'sábado', 'domingo'">Hoje é fim de semana.</p>-->
-      <p th:case="'sabado'">Hoje é fim de semana.</p>
-      <p th:case="'domingo'">Hoje é fim de semana.</p>
-      <p th:case="*">Não é um dia válido</p>
-    </div>
+        <div th:unless="${condicao}">
+            Esse conteúdo só será exibido se a condição for falsa.
+        </div>
 
-    <!--    <a th:href="@{/produto/{id}(id=${produto.id})}" th:text="${produto.nome}"></a>-->
-    <!--    <img th:src="@{/img/produto.jpg}" alt="Imagem do Produto">-->
+        <!--    -->
 
-    <h1>Thymeleaf th:object Example</h1>
+        <h1>HREF</h1>
+        <a th:href="@{/caminho/para/pagina}">
+            Esse link leva para outra página.
+        </a>
 
-    <form th:object="${user}" method="post">
-      <label for="name">Name:</label>
-      <input type="text" id="name" name="name" th:field="*{name}" />
-      <br />
+        <!--    -->
 
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" th:field="*{email}" />
-      <br />
-      <br />
+        <br/>
 
-      <button type="submit">Submit</button>
-    </form>
+        <h1>IMAGES</h1>
+                <img th:src="@{'/static/Captura.png'}" alt="Imagem" />
 
-    <!--  -->
-    <a th:href="@{/produto/{id}(id=${produto.id})}" th:text="${produto.nome}"></a>
-    <img th:src="@{/img/produto.jpg}" alt="Imagem do Produto">
+        <!--    <img th:src="@{/caminho/para/imagem.jpg}" />-->
+        <!--    <img th:src="@{${path}/${imageName}}"/>-->
+        <!--    <img th:src="{${path}/${imageName}}"/>-->
+        <!--    <img th:attr="src=@{|/path/${imageName}|}" />-->
+        <!--    <img th:src="@{|${#servletContext.contextPath}/assets/ubuntu-kudu-wallpaper.jpg|}" alt="Imagem">-->
+        <!--    <link rel="stylesheet" th:src="@{${#servletContext.contextPath}}/assets/Captura.png" />-->
+        <!--    <img th:src="@{src/main/resources/assets/Captura.png}" alt="Imagem">-->
+        <br/>
+        <br/>
 
-    <ul>
-      <li th:each="produto : ${produtos}" th:text="${produto.nome}"></li>
-    </ul>
+        <!--    -->
 
-    <ul>
-      <li th:each="produto : ${produtos}">
-        <span th:text="${produto.id}"></span> -
-        <span th:text="${produto.nome}"></span>
-      </li>
-    </ul>
-    <!--  -->
+        <h1>ATTR</h1>
+        <div th:attr="data-valor=${valor}">Esse atributo foi definido dinamicamente.</div>
+        <!--    <img src="../assets/ubuntu-kudu-wallpaper.jpg" th:attr="src=@{/newpath/myimage.jpg}">-->
 
-  </body>
+        <!--    -->
+
+        <h1>SWITCH CASE</h1>
+        <div th:switch="${diaSemana}">
+            <p th:case="'segunda-feira'">Hoje é segunda-feira.</p>
+            <p th:case="'terça-feira'">Hoje é terça-feira.</p>
+            <p th:case="'quarta-feira'">Hoje é quarta-feira.</p>
+            <p th:case="'quinta-feira'">Hoje é quinta-feira.</p>
+            <p th:case="'sexta-feira'">Hoje é sexta-feira.</p>
+            <p th:case="'sabado'">Hoje é fim de semana.</p>
+            <p th:case="'domingo'">Hoje é fim de semana.</p>
+            <p th:case="*">Não é um dia válido</p>
+        </div>
+
+        <!--    <a th:href="@{/produto/{id}(id=${produto.id})}" th:text="${produto.nome}"></a>-->
+        <!--    <img th:src="@{/img/produto.jpg}" alt="Imagem do Produto">-->
+
+        <a th:href="@{/produto/{id}(id=${produto.id})}" th:text="${produto.nome}"></a>
+        <img th:src="@{/img/produto.jpg}" alt="Imagem do Produto">
+
+        <h1>Thymeleaf th:object Example</h1>
+
+        <form th:object="${user}" method="post">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" th:field="*{name}" />
+            <br />
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" th:field="*{email}" />
+            <br />
+            <br />
+
+            <button type="submit">Submit</button>
+        </form>
+
+        <br />
+        <br />
+
+        <form th:object="${user}" method="post" action="@{/usuario/save}">
+            <input type="text" th:field="*{name}" />
+            <input type="email" th:field="*{email}" />
+            <button type="submit">Salvar</button>
+        </form>
+
+    </body>
+
 </html>

@@ -19,7 +19,6 @@
 Aqui estão alguns exemplos de como usar essas tags em um arquivo HTML com o Thymeleaf:
 
 ```html
-Copy code
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
@@ -117,7 +116,7 @@ Java:
 ```java
     model.addAttribute("condicao", false);
 ```
-4. `th:switch`, `th:case` e `th:break: permite a criação de estruturas condicionais mais complexas:
+4. `th:switch`, `th:case` e `th:break`: permite a criação de estruturas condicionais mais complexas:
 
 HTML:
 ```html
