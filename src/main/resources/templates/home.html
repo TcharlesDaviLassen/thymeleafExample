@@ -30,7 +30,7 @@
             Esse conteúdo só será exibido se a condição for verdadeira.
         </div>
 
-        <div th:unless="${condicao}">
+        <div th:unless="${condicaoUn}">
             Esse conteúdo só será exibido se a condição for falsa.
         </div>
 
@@ -46,8 +46,8 @@
         <br/>
 
         <h1>IMAGES</h1>
-                <img th:src="@{'/static/Captura.png'}" alt="Imagem" />
-
+            <!-- <img th:src="@{'/static/Captura.png'}" alt="Imagem" /> -->
+            <img src="../static/Captura.png" width="1000" style="border-radius: 30px;" th:src="@{Captura.png}" alt="Imagem" title="Image caption"/>
         <!--    <img th:src="@{/caminho/para/imagem.jpg}" />-->
         <!--    <img th:src="@{${path}/${imageName}}"/>-->
         <!--    <img th:src="{${path}/${imageName}}"/>-->
@@ -82,7 +82,8 @@
         <!--    <img th:src="@{/img/produto.jpg}" alt="Imagem do Produto">-->
 
         <a th:href="@{/produto/{id}(id=${produto.id})}" th:text="${produto.nome}"></a>
-        <img th:src="@{/img/produto.jpg}" alt="Imagem do Produto">
+        <img src="../static/Captura.png" width="1000" style="border-radius: 30px;"  th:src="@{Captura.png}" alt="Imagem do Produto" title="Image caption"/>
+        <!-- <img th:src="@{/img/produto.jpg}" alt="Imagem do Produto"> -->
 
         <h1>Thymeleaf th:object Example</h1>
 
