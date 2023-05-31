@@ -46,7 +46,10 @@
         <br/>
 
         <h1>IMAGES</h1>
-                <img th:src="@{'/static/Captura.png'}" alt="Imagem" />
+               <!-- <img th:src="@{'/static/Captura.png'}" alt="Imagem" /> -->
+               <!-- <img th:src="@{${'/static/ubuntu-dark.jpg'}}" height="1080" width="1920" alt="Imagem" /> -->
+        <img src="/static/ubuntu-dark.jpg" height="1080" width="1920" alt="Imagems" />
+        <!--        <img th:src="@{${#servletContext.contextPath}+'/Captura.png'}" alt="Minha imagem">-->
 
         <!--    <img th:src="@{/caminho/para/imagem.jpg}" />-->
         <!--    <img th:src="@{${path}/${imageName}}"/>-->
@@ -62,7 +65,7 @@
 
         <h1>ATTR</h1>
         <div th:attr="data-valor=${valor}">Esse atributo foi definido dinamicamente.</div>
-        <!--    <img src="../assets/ubuntu-kudu-wallpaper.jpg" th:attr="src=@{/newpath/myimage.jpg}">-->
+           <!-- <img src="../assets/ubuntu-kudu-wallpaper.jpg" th:attr="src=@{src/main/resources/static/ubuntu-dark.jpg}"> -->
 
         <!--    -->
 
@@ -107,6 +110,18 @@
             <input type="email" th:field="*{email}" />
             <button type="submit">Salvar</button>
         </form>
+
+        <br />
+
+        <h1>SELECT</h1>
+        <select>
+            <option th:each="option : ${options}"
+                    th:value="${option}"
+                    th:text="${option}"
+                    th:selected="${option == selectedOption}"
+            >Opção
+            </option>
+        </select>
 
     </body>
 

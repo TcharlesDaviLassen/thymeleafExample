@@ -7,10 +7,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
 
 @Controller
 public class MeuController {
@@ -47,19 +53,35 @@ public class MeuController {
 
         //
         List<Produto> produtos = new ArrayList<>();
-        produtos.add(new Produto(2L,"Produto 1"));
-        produtos.add(new Produto(3L,"Produto 2"));
+        produtos.add(new Produto(2L, "Produto 1"));
+        produtos.add(new Produto(3L, "Produto 2"));
         model.addAttribute("produtos", produtos);
 
-        //        String path = "src/main/resources/assets/";
-        //        String imageName = "Captura.png";
-        //        model.addAttribute("path", path);
-        //        model.addAttribute("imageName", imageName);
+        // String path = "src/main/resources/assets/";
+        // String imageName = "Captura.png";
+        // model.addAttribute("path", path);
+        // model.addAttribute("imageName", imageName);
+
+        // File imagemArquivo = new File("./src/main/resources/templates/images/" +
+        // nomeImagem);
 
         String assetsPath = servletContext.getRealPath("/static");
         model.addAttribute("assetsPath", assetsPath);
+        //
+        List<String> options = Arrays.asList(" ", "Opção 1", "Opção 2", "Opção 3", "Opção 4");
+        String selectedOption = " "; // opção selecionada por padrão
+
+        model.addAttribute("options", options);
+        model.addAttribute("selectedOption", selectedOption);
 
         return "home";
     }
+
+    // @GetMapping("/images")
+    // public ModelAndView getImages() {
+    //     String assetsPath = servletContext.getRealPath("src/main/resources/static");
+
+       
+    // }
 
 }
