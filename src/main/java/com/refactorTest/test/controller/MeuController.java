@@ -7,19 +7,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
+import java.io.Console;
+import java.text.DateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
-
 
 @Controller
 public class MeuController {
+
+    private LocalDate dataDeInscricao;
 
     @Autowired
     private ServletContext servletContext;
@@ -33,10 +34,17 @@ public class MeuController {
         //
         model.addAttribute("itens", Arrays.asList("item 1", "item 2", "item 3"));
         //
-        model.addAttribute("diaSemana", "*");
+        Date data = new Date();
+        DateFormat dff = DateFormat.getDateInstance(DateFormat.FULL);
+        String dia = String.valueOf(dff.format(data).split(",")[0]);
+        System.out.println(dia);
+        model.addAttribute("diaSemana", dia);
         //
         boolean condicao = true;
         model.addAttribute("condicao", condicao);
+
+        boolean condicaoUn = true;
+        model.addAttribute("condicaoUn", condicaoUn);
         //
         List<String> listaDeItens = Arrays.asList("Item 1", "Item 2", "Item 3");
         model.addAttribute("listaDeItens", listaDeItens);
@@ -81,7 +89,7 @@ public class MeuController {
     // public ModelAndView getImages() {
     //     String assetsPath = servletContext.getRealPath("src/main/resources/static");
 
-       
+
     // }
 
 }

@@ -30,7 +30,7 @@
             Esse conteúdo só será exibido se a condição for verdadeira.
         </div>
 
-        <div th:unless="${condicao}">
+        <div th:unless="${condicaoUn}">
             Esse conteúdo só será exibido se a condição for falsa.
         </div>
 
@@ -65,7 +65,7 @@
 
         <h1>ATTR</h1>
         <div th:attr="data-valor=${valor}">Esse atributo foi definido dinamicamente.</div>
-           <!-- <img src="../assets/ubuntu-kudu-wallpaper.jpg" th:attr="src=@{src/main/resources/static/ubuntu-dark.jpg}"> -->
+        <!--    <img src="../assets/ubuntu-kudu-wallpaper.jpg" th:attr="src=@{/newpath/myimage.jpg}">-->
 
         <!--    -->
 
@@ -85,7 +85,8 @@
         <!--    <img th:src="@{/img/produto.jpg}" alt="Imagem do Produto">-->
 
         <a th:href="@{/produto/{id}(id=${produto.id})}" th:text="${produto.nome}"></a>
-        <img th:src="@{/img/produto.jpg}" alt="Imagem do Produto">
+        <img src="../static/Captura.png" width="1000" style="border-radius: 30px;"  th:src="@{Captura.png}" alt="Imagem do Produto" title="Image caption"/>
+        <!-- <img th:src="@{/img/produto.jpg}" alt="Imagem do Produto"> -->
 
         <h1>Thymeleaf th:object Example</h1>
 
